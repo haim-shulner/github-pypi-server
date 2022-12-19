@@ -25,7 +25,7 @@ def package_exists(soup, package_name):
     return False
 
 
-def register(pkg_name, version, author, short_desc, long_desc):
+def register(pkg_name, version, author, short_desc):
     # Read our index first
     link = 'https://github.com/haim-shulner/' + pkg_name
     homepage = 'git+' + link + '@' + version

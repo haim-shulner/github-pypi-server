@@ -69,7 +69,7 @@ def register(pkg_name, version, author, short_desc):
         f.write(template)
 
 
-def update(pkg_name, version, link):
+def update(pkg_name, version):
     homepage = 'https://github.com/haim-shulner/' + pkg_name
     link = 'git+' + homepage + '@' + version
     

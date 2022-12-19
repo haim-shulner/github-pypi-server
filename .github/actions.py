@@ -28,7 +28,7 @@ def package_exists(soup, package_name):
 def register(pkg_name, version, author, short_desc):
     # Read our index first
     homepage = 'https://github.com/haim-shulner/' + pkg_name
-    link = 'git+' + link + '@' + version
+    link = 'git+' + homepage + '@' + version
     long_desc = short_desc
     
     with open(INDEX_FILE) as html_file:
@@ -70,7 +70,9 @@ def register(pkg_name, version, author, short_desc):
 
 
 def update(pkg_name, version, link):
-    link = 'https://github.com/haim-shulner/' + pkg_name
+    homepage = 'https://github.com/haim-shulner/' + pkg_name
+    link = 'git+' + homepage + '@' + version
+    
     # Read our index first
     with open(INDEX_FILE) as html_file:
         soup = BeautifulSoup(html_file, "html.parser")

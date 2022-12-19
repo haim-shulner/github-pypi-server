@@ -25,8 +25,12 @@ def package_exists(soup, package_name):
     return False
 
 
-def register(pkg_name, version, author, short_desc, long_desc, homepage, link):
+def register(pkg_name, version, author, short_desc, long_desc):
     # Read our index first
+    link = 'https://github.com/haim-shulner/' + pkg_name
+    homepage = 'git+' + link + '@' + version
+    long_desc = short_desc
+    
     with open(INDEX_FILE) as html_file:
         soup = BeautifulSoup(html_file, "html.parser")
     norm_pkg_name = normalize(pkg_name)
@@ -66,6 +70,7 @@ def register(pkg_name, version, author, short_desc, long_desc, homepage, link):
 
 
 def update(pkg_name, version, link):
+    link = 'https://github.com/haim-shulner/' + pkg_name
     # Read our index first
     with open(INDEX_FILE) as html_file:
         soup = BeautifulSoup(html_file, "html.parser")
@@ -131,9 +136,6 @@ def main():
             version=os.environ["PKG_VERSION"],
             author=os.environ["PKG_AUTHOR"],
             short_desc=os.environ["PKG_SHORT_DESC"],
-            long_desc=os.environ["PKG_LONG_DESC"],
-            homepage=os.environ["PKG_HOMEPAGE"],
-            link=os.environ["PKG_LINK"],
         )
     elif action == "DELETE":
         delete(pkg_name=os.environ["PKG_NAME"])
@@ -141,7 +143,6 @@ def main():
         update(
             pkg_name=os.environ["PKG_NAME"],
             version=os.environ["PKG_VERSION"],
-            link=os.environ["PKG_LINK"],
         )
 
 

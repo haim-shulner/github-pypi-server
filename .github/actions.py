@@ -27,8 +27,8 @@ def package_exists(soup, package_name):
 
 def register(pkg_name, version, author, short_desc):
     # Read our index first
-    link = 'https://github.com/haim-shulner/' + pkg_name
-    homepage = 'git+' + link + '@' + version
+    homepage = 'https://github.com/haim-shulner/' + pkg_name
+    link = 'git+' + link + '@' + version
     long_desc = short_desc
     
     with open(INDEX_FILE) as html_file:
